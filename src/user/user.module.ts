@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
+import { OrmModule } from 'src/orm/orm.module';
 import { UserController } from './user.controller';
 import { UserService } from './user.service';
-import { OrmModule } from 'src/orm/orm.module';
 
 @Module({
   imports: [OrmModule],

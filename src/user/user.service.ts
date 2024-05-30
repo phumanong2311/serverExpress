@@ -22,7 +22,7 @@ export class UserService {
   }
 
   async create(data: User) {
-    const user = await this.userRepository.create(data);
+    const user = this.userRepository.create(data);
     await this.em.flush();
     return user;
   }

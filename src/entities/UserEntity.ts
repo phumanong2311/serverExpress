@@ -12,6 +12,9 @@ export class User extends BaseEntity {
   @Property()
   password!: string;
 
+  @Property()
+  phoneNumber!: number;
+
   @Property({ nullable: true })
   age?: number;
 }
