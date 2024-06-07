@@ -4,9 +4,9 @@ import { SeedManager } from '@mikro-orm/seeder';
 import { User } from './entities/';
 
 export default defineConfig({
-  dbName: 'product_management',
+  dbName: 'cpass',
   user: 'postgres',
-  password: 'password',
+  password: 'postgres',
   port: 5432,
   entities: [User],
   metadataProvider: TsMorphMetadataProvider,

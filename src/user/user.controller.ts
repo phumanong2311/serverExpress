@@ -1,10 +1,12 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   HttpException,
   HttpStatus,
   Param,
+  Patch,
   Post,
 } from '@nestjs/common';
 import { UserService } from './user.service';
@@ -35,12 +37,15 @@ export class UserController {
     return user;
   }
 
-  // @Put(':id')
-  // async update(@Param('id', ParseIntPipe) id: number, @Body() body: any) {
-  //   const author = await this.userRepository.findOneOrFail(id);
-  //   wrap(author).assign(body);
-  //   await this.em.flush();
+  @Patch(':id')
+  async update(@Param('id') id: number, @Body() body: any) {
+    const author = await this.userService.update(id, body);
+    return author;
+  }
 
-  //   return author;
-  // }
+  @Delete(':id')
+  async delete(@Param('id') id: number) {
+    const author = await this.userService.delete(id);
+    return author;
+  }
 }
