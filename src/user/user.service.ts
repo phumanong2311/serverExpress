@@ -5,13 +5,14 @@ import {
   QueryOrder,
 } from '@mikro-orm/postgresql';
 import { Injectable } from '@nestjs/common';
-import { User } from 'src/entities/UserEntity';
+import { Users } from 'src/entities/UsersEntity';
+import { CreateUserDto, UpdateUserDto } from './dto/user.dto';
 
 @Injectable()
 export class UserService {
   constructor(
-    @InjectRepository(User)
-    private readonly userRepository: EntityRepository<User>,
+    @InjectRepository(Users)
+    private readonly userRepository: EntityRepository<Users>,
     private readonly em: EntityManager,
   ) {}
   async findAll() {
@@ -25,13 +26,13 @@ export class UserService {
     return await this.userRepository.findOne({ id });
   }
 
-  async create(data: User) {
+  async create(data: CreateUserDto) {
     const user = this.userRepository.create(data);
     await this.em.flush();
     return user;
   }
 
-  async update(id: number, data: User) {
+  async update(id: number, data: UpdateUserDto) {
     const user = await this.userRepository.findOneOrFail({ id });
     this.userRepository.assign(user, data);
     await this.em.flush();

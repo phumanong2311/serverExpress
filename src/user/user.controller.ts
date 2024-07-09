@@ -10,6 +10,7 @@ import {
   Post,
 } from '@nestjs/common';
 import { UserService } from './user.service';
+import { CreateUserDto, UpdateUserDto } from './dto/user.dto';
 
 @Controller('user')
 export class UserController {
@@ -26,8 +27,8 @@ export class UserController {
   }
 
   @Post()
-  async create(@Body() body: any) {
-    if (!body.name || !body.email) {
+  async create(@Body() body: CreateUserDto) {
+    if (!body.fullName || !body.email) {
       throw new HttpException(
         'One of `name, email` is missing',
         HttpStatus.BAD_REQUEST,
@@ -38,7 +39,7 @@ export class UserController {
   }
 
   @Patch(':id')
-  async update(@Param('id') id: number, @Body() body: any) {
+  async update(@Param('id') id: number, @Body() body: UpdateUserDto) {
     const author = await this.userService.update(id, body);
     return author;
   }

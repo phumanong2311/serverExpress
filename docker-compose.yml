@@ -3,11 +3,11 @@ services:
   database:
     image: postgres:latest
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=cpass
-    container_name: cpass
+      - POSTGRES_USER=warehouse
+      - POSTGRES_PASSWORD=warehouse
+      - POSTGRES_DB=warehouse
+    container_name: warehouse
     volumes:
-      - ./data:/var/lib/postgresql/cpass/data
+      - ./data:/var/lib/postgresql/warehouse/data
     ports:
       - 5432:5432

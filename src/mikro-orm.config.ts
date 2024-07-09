@@ -1,14 +1,14 @@
 import { defineConfig } from '@mikro-orm/postgresql';
 import { TsMorphMetadataProvider } from '@mikro-orm/reflection';
 import { SeedManager } from '@mikro-orm/seeder';
-import { User } from './entities/';
+import { Users } from './entities/';
 
 export default defineConfig({
-  dbName: 'cpass',
-  user: 'postgres',
-  password: 'postgres',
+  dbName: 'warehouse',
+  user: 'warehouse',
+  password: 'warehouse',
   port: 5432,
-  entities: [User],
+  entities: [Users],
   metadataProvider: TsMorphMetadataProvider,
   debug: true,
   extensions: [SeedManager],

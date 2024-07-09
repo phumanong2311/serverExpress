@@ -1,8 +1,9 @@
-import { Entity, Property } from '@mikro-orm/core';
+import { Entity, ManyToMany, Property } from '@mikro-orm/core';
 import { BaseEntity } from './BaseEntity';
+import { Roles } from './RolesEntity';
 
 @Entity()
-export class User extends BaseEntity {
+export class Users extends BaseEntity {
   @Property()
   fullName!: string;
 
@@ -17,4 +18,7 @@ export class User extends BaseEntity {
 
   @Property({ nullable: true })
   age?: number;
+
+  @ManyToMany(() => Roles)
+  roles: Roles[];
 }
